@@ -202,7 +202,15 @@ and should return an array of objects.
     {name: "Julius", rating: 2, feedback: "I was largely unimpressed by this venue. Nothing special on the menu and too expensive. The atmosphere is polarizing, and not for me, but I think some would like it." }]
 */
 function getLongReviews(arr) {
-  /* code here */
+  let longReviews = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    let wordCount = arr[i].feedback.split(" ").length;
+    if (wordCount > 15) {
+      longReviews.push(arr[i]);
+    }
+  }
+  return longReviews;
 }
 
 console.log(getTask("Stretch 2"), getLongReviews(reviews));
@@ -224,8 +232,14 @@ The returned object should have the following characteristics:
          (2) returns the updated value of the `odometer`.
 */
 
-function carMaker(/* code here */) {
-  /* code here */
+function carMaker(int) {
+  const carStats = {
+    odometer: int,
+    drive: function (distance) {
+      this.odometer += distance;
+    },
+  };
+  return carStats;
 }
 
-// console.log(getTask("Stretch 3"), getLastReview(reviews));
+console.log(getTask("Stretch 3"), carMaker(42000));
